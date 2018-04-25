@@ -8,10 +8,10 @@ namespace Anna_Baseley_Lab2
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
             //Input
-            decimal RoomPerimeter = 0;
+            decimal RoomPerimeter = 0; 
             decimal RoomArea = 0;
             decimal RoomVolume = 0;
             string restart;
