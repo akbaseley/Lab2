@@ -18,30 +18,36 @@ namespace Anna_Baseley_Lab2
 
             Console.WriteLine("Hello!  Let's run the Grand Circus Room Generator Program!");
             do
-            { Console.WriteLine("Please enter the length of the room");
-            decimal RoomLength = decimal.Parse(Console.ReadLine());
+            {
+                Console.WriteLine("Please enter the length of the room");
+                decimal RoomLength = decimal.Parse(Console.ReadLine());
 
-            Console.WriteLine("Please enter the width of the room.");
-            decimal RoomWidth = decimal.Parse(Console.ReadLine());
+                Console.WriteLine("Please enter the width of the room.");
+                decimal RoomWidth = decimal.Parse(Console.ReadLine());
 
-            Console.WriteLine("Please enter the height the room.");
-            decimal RoomHeight = decimal.Parse(Console.ReadLine());
+                Console.WriteLine("Please enter the height the room.");
+                decimal RoomHeight = decimal.Parse(Console.ReadLine());
 
 
-            //Processing
+                //Processing
 
-            RoomArea = RoomLength * RoomWidth;
-            RoomPerimeter = (RoomLength * 2) + (RoomWidth *2);
-            RoomVolume = RoomArea * RoomHeight;
-          
-            //Output
+                RoomArea = RoomLength * RoomWidth;
+                RoomPerimeter = (RoomLength * 2) + (RoomWidth * 2);
+                RoomVolume = RoomArea * RoomHeight;
 
-            Console.WriteLine($"Area: {RoomArea}");
-            Console.WriteLine($"Perimeter: {RoomPerimeter}");
-            Console.WriteLine($"Volume: {RoomVolume}");
+                //Output
 
-            Console.WriteLine("Would you like to continue measuring rooms? (y/n) : ");
-            restart = Console.ReadLine();
+                Console.WriteLine($"Area: {RoomArea}");
+                Console.WriteLine($"Perimeter: {RoomPerimeter}");
+                Console.WriteLine($"Volume: {RoomVolume}");
+
+                Console.WriteLine("Would you like to continue measuring rooms? (y/n) : ");
+                restart = Console.ReadLine();
+
+                if (restart.ToLower() != "y")
+                {
+                    Console.WriteLine("Okay!  See you next time.");
+                }
             }
 
             while (restart.ToLower() == "y");
