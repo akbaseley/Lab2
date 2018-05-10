@@ -11,47 +11,86 @@ namespace Anna_Baseley_Lab2
         static void Main(string[] args) 
         {
             //Input
-            decimal RoomPerimeter = 0; 
-            decimal RoomArea = 0;
-            decimal RoomVolume = 0;
-            string restart;
+
 
             Console.WriteLine("Hello!  Let's run the Grand Circus Room Generator Program!");
-            do
+
+            while (true)
             {
-                Console.WriteLine("Please enter the length of the room");
-                decimal RoomLength = decimal.Parse(Console.ReadLine());
-
-                Console.WriteLine("Please enter the width of the room.");
-                decimal RoomWidth = decimal.Parse(Console.ReadLine());
-
-                Console.WriteLine("Please enter the height the room.");
-                decimal RoomHeight = decimal.Parse(Console.ReadLine());
-
+                //input 
+                decimal RoomLength = GetNumbers("Enter the length of the room.");
+                decimal RoomWidth = GetNumbers("Enter the width of the room.");
+                decimal RoomHeight = GetNumbers("Enter the height of the room.");
 
                 //Processing
 
-                RoomArea = RoomLength * RoomWidth;
-                RoomPerimeter = (RoomLength * 2) + (RoomWidth * 2);
-                RoomVolume = RoomArea * RoomHeight;
+                decimal Area = RoomArea(RoomLength, RoomWidth);
+                decimal Perimeter = RoomPerimeter(RoomLength, RoomWidth);
+                decimal Volume = RoomVolume(RoomLength, RoomWidth);
 
                 //Output
 
-                Console.WriteLine($"Area: {RoomArea}");
-                Console.WriteLine($"Perimeter: {RoomPerimeter}");
-                Console.WriteLine($"Volume: {RoomVolume}");
+                Console.WriteLine($"Area: {Area}");
+                Console.WriteLine($"Perimeter: {Perimeter}");
+                Console.WriteLine($"Volume: {Volume}");
 
-                Console.WriteLine("Would you like to continue measuring rooms? (y/n) : ");
-                restart = Console.ReadLine();
-
-                if (restart.ToLower() != "y")
+                //Continue?
+                if (UserContinue() == false)
                 {
-                    Console.WriteLine("Okay!  See you next time.");
+                    break;            
                 }
             }
+           
+        }
 
-            while (restart.ToLower() == "y");
+        public static decimal GetNumbers(string Message)
+        {
+            Console.WriteLine(Message);
+            decimal UserInput = decimal.Parse(Console.ReadLine());
+            return UserInput;
+        }
 
+        public static decimal RoomArea(decimal RoomLength, decimal RoomWidth)
+        {
+            decimal Area = RoomLength * RoomWidth;
+            return Area;
+        }
+
+        public static decimal RoomPerimeter(decimal RoomLength, decimal RoomWidth)
+        {
+            decimal Perimeter = (RoomLength * 2) + (RoomWidth * 2);
+            return Perimeter;
+        }
+
+        public static decimal RoomVolume(decimal RoomArea, decimal RoomHeight)
+        {
+            decimal volume = RoomArea * RoomHeight;
+            return volume;
+        }
+        
+        public static bool UserContinue()
+        {
+            Console.WriteLine("Would you like to continue measuring rooms? (y/n) : ");
+            string restart = Console.ReadLine();
+            while (true)
+            {
+                if (restart.ToLower() != "y" && restart.ToLower() != "n")
+                {
+                    Console.WriteLine("Oops! I didn't get that.  Would you like to go again? y/n");
+                    restart = Console.ReadLine();
+
+                }
+
+                else if (restart.ToLower() == "n")
+                {
+                    Console.WriteLine("Okay!  See you next time.");
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
     }
 }
