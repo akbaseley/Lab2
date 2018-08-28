@@ -22,17 +22,11 @@ namespace Anna_Baseley_Lab2
                 decimal RoomWidth = GetNumbers("Enter the width of the room.");
                 decimal RoomHeight = GetNumbers("Enter the height of the room.");
 
-                //Processing
+                //Processing & Output
 
-                decimal Area = RoomArea(RoomLength, RoomWidth);
-                decimal Perimeter = RoomPerimeter(RoomLength, RoomWidth);
-                decimal Volume = RoomVolume(RoomLength, RoomWidth);
-
-                //Output
-
-                Console.WriteLine($"Area: {Area}");
-                Console.WriteLine($"Perimeter: {Perimeter}");
-                Console.WriteLine($"Volume: {Volume}");
+                Console.WriteLine($"Area: {RoomArea(RoomLength, RoomWidth)}");
+                Console.WriteLine($"Perimeter: {RoomPerimeter(RoomLength, RoomWidth)}");
+                Console.WriteLine($"Volume: {RoomVolume(RoomLength, RoomWidth)}");
 
                 //Continue?
                 if (UserContinue() == false)
@@ -74,14 +68,14 @@ namespace Anna_Baseley_Lab2
             string restart = Console.ReadLine();
             while (true)
             {
-                if (restart.ToLower() != "y" && restart.ToLower() != "n")
+                while (restart.ToLower() != "y" && restart.ToLower() != "n")
                 {
                     Console.WriteLine("Oops! I didn't get that.  Would you like to go again? y/n");
                     restart = Console.ReadLine();
 
                 }
 
-                else if (restart.ToLower() == "n")
+                if (restart.ToLower() == "n")
                 {
                     Console.WriteLine("Okay!  See you next time.");
                     return false;
